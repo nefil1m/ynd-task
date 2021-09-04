@@ -1,10 +1,14 @@
 import classNames from 'classnames';
-import { Field } from 'formik';
+import { ErrorMessage, Field } from 'formik';
 import styles from './Input.module.scss';
 
-interface Props extends Partial<HTMLInputElement> {
-  name: string;
+interface Props {
   block?: boolean;
+  className?: string;
+  id?: string;
+  name: string;
+  placeholder?: string;
+  type?: string;
 }
 
 const Input = ({
@@ -15,15 +19,27 @@ const Input = ({
   block = false,
   ...props
 }: Props) => (
-  <Field
-    {...props}
-    id={id}
-    name={name}
-    type={type}
-    className={classNames(className, styles.input, {
-      [styles.inputBlock]: block,
-    })}
-  />
+  <>
+    <ErrorMessage name={name}>
+      {(msg) => (
+        <>
+          {msg && (
+            <p className={styles.error}>{msg}</p>
+          )}
+          <Field
+            {...props}
+            id={id}
+            name={name}
+            type={type}
+            className={classNames(className, styles.input, {
+              [styles.inputBlock]: block,
+              [styles.inputError]: msg,
+            })}
+          />
+        </>
+      )}
+    </ErrorMessage>
+  </>
 );
 
 export default Input;

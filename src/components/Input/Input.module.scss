@@ -10,4 +10,13 @@
     display: block;
     width: 100%;
   }
+
+  &Error {
+    border-color: $danger;
+  }
+}
+
+.error {
+  margin-bottom: 5px;
+  color: $danger;
 }
