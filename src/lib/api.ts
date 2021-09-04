@@ -1,5 +1,7 @@
 const API_URI = 'https://api.github.com';
 
+export type SerializableAPIError = Pick<APIError, 'kind' | 'data' | 'message'>;
+
 export type GitHubValidationError = {
   field: string;
   message: string;
@@ -12,9 +14,10 @@ enum ErrorKind {
 
 export class APIError extends Error {
   readonly data;
+
   readonly kind;
 
-  constructor(data: any, kind = 'NetworkError') {
+  constructor(data: unknown, kind = 'NetworkError') {
     super('APIError');
     this.data = data;
     this.kind = kind;
@@ -40,20 +43,23 @@ const callApi = async (endpoint: string, init?: RequestInit) => {
   }
 
   return json;
-}
+};
 
 const API = {
-  get: async (endpoint: string, init?: RequestInit) => callApi(endpoint, {
-    method: 'GET',
-    ...init,
-    headers: {
-      ...init?.headers,
-      Accept: 'application/vnd.github.v3+json',
-    },
-  }),
-}
+  get: async (endpoint: string, init?: RequestInit): Promise<ReturnType<typeof callApi>> => (
+    callApi(endpoint, {
+      method: 'GET',
+      ...init,
+      headers: {
+        ...init?.headers,
+        Accept: 'application/vnd.github.v3+json',
+      },
+    })
+  ),
+};
 
-
-export const isNetworkError = (e: any) => e?.kind === ErrorKind.NETWORK_ERROR;
+// eslint-disable-next-line max-len
+// eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+export const isNetworkError = (e: any): boolean => e?.kind === ErrorKind.NETWORK_ERROR;
 
 export default API;

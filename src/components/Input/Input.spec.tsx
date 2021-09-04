@@ -1,4 +1,9 @@
-import { render, fireEvent, screen, waitForElement } from '@testing-library/react';
+import {
+  render,
+  fireEvent,
+  screen,
+  waitForElement,
+} from '@testing-library/react';
 import { Formik, Form } from 'formik';
 import Input from './Input';
 
@@ -18,7 +23,7 @@ describe('input', () => {
         <Form data-testid="form">
           <Input name="foo" />
         </Form>
-      </Formik>
+      </Formik>,
     );
 
     fireEvent.submit(screen.getByTestId('form'));

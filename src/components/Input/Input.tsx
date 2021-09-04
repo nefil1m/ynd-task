@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { ErrorMessage, Field } from 'formik';
+import { ReactElement } from 'react';
 import styles from './Input.module.scss';
 
 interface Props {
@@ -17,28 +18,23 @@ const Input = ({
   className,
   type = 'text',
   block = false,
-  ...props
-}: Props) => (
+  placeholder,
+}: Props): ReactElement => (
   <>
     <ErrorMessage name={name}>
-      {(msg) => (
-        <>
-          {msg && (
-            <p className={styles.error}>{msg}</p>
-          )}
-          <Field
-            {...props}
-            id={id}
-            name={name}
-            type={type}
-            className={classNames(className, styles.input, {
-              [styles.inputBlock]: block,
-              [styles.inputError]: msg,
-            })}
-          />
-        </>
-      )}
+      {(msg) => (msg && (
+        <p className={styles.error}>{msg}</p>
+      ))}
     </ErrorMessage>
+    <Field
+      id={id}
+      name={name}
+      type={type}
+      placeholder={placeholder}
+      className={classNames(className, styles.input, {
+        [styles.inputBlock]: block,
+      })}
+    />
   </>
 );
 

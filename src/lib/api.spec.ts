@@ -38,7 +38,7 @@ describe('api utility', () => {
       errors: [{
         field: 'foo',
         message: 'foo is invalid',
-      }]
+      }],
     }), {
       status: 422,
     });

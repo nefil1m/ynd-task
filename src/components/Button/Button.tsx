@@ -22,12 +22,13 @@ const Button = ({
   disabled,
   type = 'button',
   variant = ButtonVariant.PRIMARY,
-}: Props) => (
+}: Props): ReactElement => (
   <button
     disabled={disabled}
     className={classNames(className, styles.button, styles[`button${variant}`], {
       [styles.buttonBlock]: block,
     })}
+    // eslint-disable-next-line react/button-has-type
     type={type}
   >
     {children}
