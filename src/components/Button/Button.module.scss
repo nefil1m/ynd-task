@@ -7,6 +7,10 @@
   cursor: pointer;
   transition: background-color .125s ease-in-out;
 
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
   &Block {
     width: 100%;
     display: block;

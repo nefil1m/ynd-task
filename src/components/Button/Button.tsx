@@ -10,6 +10,7 @@ interface Props {
   block?: boolean;
   children: string | ReactElement;
   className?: string;
+  disabled?: boolean;
   type?: 'submit' | 'button' | 'reset';
   variant?: ButtonVariant;
 }
@@ -18,10 +19,12 @@ const Button = ({
   block,
   children,
   className,
+  disabled,
   type = 'button',
   variant = ButtonVariant.PRIMARY,
 }: Props) => (
   <button
+    disabled={disabled}
     className={classNames(className, styles.button, styles[`button${variant}`], {
       [styles.buttonBlock]: block,
     })}
