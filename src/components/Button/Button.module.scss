@@ -1,0 +1,23 @@
+@import '../../styles/variables.module';
+
+.button {
+  border: none;
+  height: 40px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color .125s ease-in-out;
+
+  &Block {
+    width: 100%;
+    display: block;
+  }
+
+  &Primary {
+    background: $primary;
+    color: #fff;
+
+    &:hover {
+      background: darken($primary, 10%);
+    }
+  }
+}
