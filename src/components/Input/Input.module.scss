@@ -1,0 +1,13 @@
+@import '../../styles/variables.module';
+
+.input {
+  height: $input-height;
+  padding: 0 10px;
+  background: $input-background;
+  border: $input-border;
+
+  &Block {
+    display: block;
+    width: 100%;
+  }
+}
