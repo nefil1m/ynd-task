@@ -23,7 +23,7 @@ const Repositories = ({ username }: Props): ReactElement | null => {
     get();
   }, []);
 
-  if (isLoading) {
+  if (isLoading && !repositories.length) {
     return <p>Loading...</p>;
   }
 

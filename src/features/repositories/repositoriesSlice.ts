@@ -50,7 +50,7 @@ export const repositoriesSlice = createSlice({
         state.itemsByUser[username] = {
           networkStatus: 'loading',
           networkError: null,
-          items: [],
+          items: state.itemsByUser[username]?.items ?? [],
         };
       })
       .addCase(fetchRepositories.fulfilled, (state, action) => {
