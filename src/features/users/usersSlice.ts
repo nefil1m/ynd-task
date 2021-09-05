@@ -6,6 +6,8 @@ import { mapValidationErrors } from '../../lib/validation';
 
 export type User = {
   id: string;
+  login: string;
+  // repos_url: string;
 }
 
 export interface UsersState {
@@ -60,6 +62,7 @@ export const usersSlice = createSlice({
       .addCase(searchUsers.rejected, (state, action) => {
         state.networkError = action.payload as APIError;
         state.networkStatus = 'idle';
+        state.items = [];
       });
   },
 });

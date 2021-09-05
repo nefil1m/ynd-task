@@ -6,12 +6,23 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
+  min-height: 30px;
+  padding: 10px;
 }
 
-.carretIcon {
+.caretIcon {
   transform: rotate(0deg);
   transition: transform $transition-xs;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+
+  svg {
+    width: inherit;
+    height: inherit;
+  }
 
   &Open {
     transform: rotate(180deg);
