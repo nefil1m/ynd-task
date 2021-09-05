@@ -1,11 +1,8 @@
 import { ReactElement } from 'react';
 import { Accordion, AccordionContent, AccordionToggle } from '../../components/Accordion/Accordion';
+import Repositories from '../repositories';
 import { User } from './usersSlice';
 import styles from './List.module.scss';
-
-const RepositoryList = () => (
-  <div>repos</div>
-);
 
 const UserAccordion = ({ login }: User) => (
   <Accordion>
@@ -13,7 +10,7 @@ const UserAccordion = ({ login }: User) => (
       {login}
     </AccordionToggle>
     <AccordionContent>
-      <RepositoryList />
+      <Repositories username={login} />
     </AccordionContent>
   </Accordion>
 );
