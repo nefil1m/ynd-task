@@ -1,0 +1,19 @@
+@import '../../styles/variables.module';
+
+.toggleButton {
+  border: none;
+  background: $gray100;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.carretIcon {
+  transform: rotate(0deg);
+  transition: transform $transition-xs;
+
+  &Open {
+    transform: rotate(180deg);
+  }
+}

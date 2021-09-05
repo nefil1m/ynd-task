@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
 import { isNetworkError } from '../../lib/api';
-import styles from './Search.module.css';
+import styles from './Search.module.scss';
 import { searchUsers, selectUsersError } from './usersSlice';
 
 const UserSearch = (): ReactElement => {

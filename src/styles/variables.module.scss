@@ -1,9 +1,12 @@
 $primary: #2d9cdb;
 $danger: #f00;
+$gray100: #f2f2f2;
 
 $input-height: 40px;
-$input-background: #f2f2f2;
+$input-background: $gray100;
 $input-border-color: #e0e0e0;
 $input-border: 1px solid $input-border-color;
 
 $button-height: 40px;
+
+$transition-xs: .125s ease-in-out;
