@@ -5,7 +5,8 @@ import API, { APIError, SerializableAPIError } from '../../lib/api';
 export type Repository = {
   id: string;
   name: string;
-  title: string;
+  description: string;
+  stargazersCount: string;
 }
 
 export interface RepositoriesState {
@@ -57,7 +58,18 @@ export const repositoriesSlice = createSlice({
         state.itemsByUser[username] = {
           networkStatus: 'idle',
           networkError: null,
-          items: action.payload,
+          items: action.payload.map(({
+            id,
+            name,
+            description,
+            // eslint-disable-next-line camelcase
+            stargazers_count,
+          }: { [key: string]: string }) => ({
+            id,
+            name,
+            description,
+            stargazersCount: stargazers_count,
+          })),
         };
       })
       .addCase(fetchRepositories.rejected, (state, action) => {
