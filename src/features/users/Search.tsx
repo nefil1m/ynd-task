@@ -1,5 +1,5 @@
 import { Form, Formik } from 'formik';
-import { ReactElement } from 'react';
+import { ReactElement, SetStateAction, Dispatch } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import Button from '../../components/Button/Button';
 import Input from '../../components/Input/Input';
@@ -7,7 +7,11 @@ import { isNetworkError } from '../../lib/api';
 import styles from './Search.module.scss';
 import { searchUsers, selectUsersError } from './usersSlice';
 
-const UserSearch = (): ReactElement => {
+interface Props {
+  setQueryToDisplay: Dispatch<SetStateAction<string>>;
+}
+
+const UserSearch = ({ setQueryToDisplay }: Props): ReactElement => {
   const dispatch = useAppDispatch();
   const error = useAppSelector(selectUsersError);
 
@@ -19,6 +23,8 @@ const UserSearch = (): ReactElement => {
           queryString: q,
           setErrors: actions.setErrors,
         }));
+
+        setQueryToDisplay(q);
 
         actions.setSubmitting(false);
       }}
