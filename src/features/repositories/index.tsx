@@ -2,7 +2,8 @@ import { ReactElement, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import RepositoryList from './List';
 import {
-  fetchRepositories, isUserRepositoriesLoading,
+  fetchRepositories,
+  isUserRepositoriesLoading,
   selectUserRepositories,
 } from './repositoriesSlice';
 

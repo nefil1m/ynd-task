@@ -8,8 +8,12 @@ const StarIcon = () => (
   </svg>
 );
 
-const RepositoryCard = ({ name, description, stargazersCount }: Repository) => (
-  <article className={styles.repositoryCard}>
+export const RepositoryCard = ({
+  name,
+  description,
+  stargazersCount,
+}: Repository): ReactElement => (
+  <article className={styles.repositoryCard} data-testid="repository-card">
     <header className={styles.repositoryCardHeader}>
       <span className={styles.repositoryCardTitle}>{name}</span>
       <span className={styles.repositoryCardStars}>

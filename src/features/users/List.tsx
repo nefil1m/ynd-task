@@ -20,7 +20,7 @@ interface UsersListProps {
 }
 
 const UsersList = ({ users }: UsersListProps): ReactElement => (
-  <div>
+  <div data-testid="users-list">
     <ul className={styles.list}>
       {users.map(({ id, login }) => (
         <li key={id}>

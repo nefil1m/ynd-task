@@ -11,7 +11,6 @@ const Users = (): ReactElement => {
   return (
     <>
       <UserSearch setQueryToDisplay={setQueryToDisplay} />
-
       {queryToDisplay && !!users.length && (
         <p>
           Showing users for &quot;
